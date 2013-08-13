@@ -14,7 +14,7 @@ a `NumberFormatException`, as the max value for a byte is 127.
 
 Things only get worse from there if you want to do things like mask bits,
 invert bits, or perform a shift or rotate. There is no syntax for a `byte`
-contstant in Java, and when doing bitwise operations everything is cast to
+constant in Java, and when doing bitwise operations everything is cast to
 an `int` anyway. That means code for processing bytes is littered with
 casts to and from `int`. It is very easy to make a mistake, especially
 when you throw in the right shift operator (>>) and the _unsigned_ right
