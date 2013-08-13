@@ -1,3 +1,28 @@
+// This is free and unencumbered software released into the public domain.
+// 
+// Anyone is free to copy, modify, publish, use, compile, sell, or
+// distribute this software, either in source code form or as a compiled
+// binary, for any purpose, commercial or non-commercial, and by any
+// means.
+// 
+// In jurisdictions that recognize copyright laws, the author or authors
+// of this software dedicate any and all copyright interest in the
+// software to the public domain. We make this dedication for the benefit
+// of the public at large and to the detriment of our heirs and
+// successors. We intend this dedication to be an overt act of
+// relinquishment in perpetuity of all present and future rights to this
+// software under copyright law.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+// IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+// OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+// ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+// OTHER DEALINGS IN THE SOFTWARE.
+// 
+// For more information, please refer to <http://unlicense.org/>
+
 package com.bitcurry.byteops;
 
 import static org.junit.Assert.assertEquals;
@@ -11,33 +36,14 @@ import java.util.Scanner;
 import org.junit.Test;
 
 /*
- * Notes - or why Java byte operations suck
+ * Notes
  * 
- * When trying to come up with unit tests for this library I quickly ran into
- * the issue of simply "recreating" the main code in a separate file rather
- * than developing an actual test. The problem is that there is no sane way
- * to represent raw unsigned bytes in Java. If you need more proof of this
- * try to run the code 'Byte.valueOf("FF", 16)'. Because everything in Java
- * is signed, the code above results in a NumberException, as the max value
- * for a byte is 127.
- * 
- * The problem with having everything signed becomes more obvious when trying
- * to work with hex data, which is almost always treated as unsigned. There 
- * are workarounds scattered throughout the Java API, most of them involving
- * using an int to represent a value from 0 to 255. This works fine until
- * you start using any of the byte-oriented stream interfaces or need to do
- * real bitwise operations on individual bytes.
- * 
- * Back to these unit tests. Because I don't trust my ability to properly
- * implement the ByteOps methods correctly in Java, all the test sets are 
- * created by a utility C program. The test sets are then loaded in JUnit
- * as Integers, which will treat 0x00 as "0" and 0xFF as "255". I hold on
- * to the Integer type until the very last moment before actually calling
- * the ByteOps method, at which time I call either intValue() or byteValue().
- * This seems to do the Right Thing.
- * 
- * Seriously, I love you Java, but you desperately need to get your act
- * together on dealing with bytes.
+ * Because I don't trust my ability to properly implement the ByteOps methods
+ * correctly in Java, all the test sets are created by a utility C program. The
+ * test sets are then loaded in JUnit as Integers, which will treat 0x00 as "0"
+ * and 0xFF as "255". I hold on to the Integer type until the very last moment
+ * before actually calling the ByteOps method, at which time I call either
+ * intValue() or byteValue().  This seems to do the Right Thing.
  */
 public class ByteOpsTest {
 	
