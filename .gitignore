@@ -4,6 +4,21 @@
 *.jar
 *.war
 *.ear
-/bin
-/build
-/.gradle
+*.zip
+
+# Output directories #
+bin
+build
+output
+webstart
+.gradle
+
+# IDE support files
+.classpath
+.launch
+.project
+.settings
+*.launch
+*.tmproj
+ivy*
+eclipse
