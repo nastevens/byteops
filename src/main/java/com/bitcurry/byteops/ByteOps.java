@@ -78,6 +78,21 @@ public class ByteOps {
 	}
 	
 	/**
+	 * Returns true if the bit at <code>index</code> is 0, false if bit is 1
+	 */
+	public static final boolean isBitClear(final byte op1, final int index) {
+		return !isBitSet(op1, index);
+	}
+	
+	/**
+	 * Returns true if the bit at <code>index</code> is 1, false if bit is 0
+	 */
+	public static final boolean isBitSet(final byte op1, final int index) {
+		int mask = 0x01 << index;
+		return (and(op1, mask) == mask);
+	}
+	
+	/**
 	 * Rotate <code>op1</code> by <code>n</code> bits to the left
 	 */
 	public static final byte lrotate(final byte op1, final byte n) {
